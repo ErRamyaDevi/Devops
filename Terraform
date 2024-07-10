@@ -1,4 +1,4 @@
-# What is Terraform?
+#What is Terraform?
 
 ###### Terraform is a tool that supports multi-cloud provider. i.e., it can be used by amazon, GCP, Azure etc.. 
 Amazon had individual IAC named as CloudFormationTemplate(CFT)
