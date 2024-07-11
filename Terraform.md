@@ -44,6 +44,56 @@ Typically refers to the practice of defining and structuring your Terraform code
 ![image](https://github.com/ErRamyaDevi/Devops/assets/159974512/a3fc33cb-db46-45eb-ae5e-b300d3056da3)
 
 
+## **Demo**
+
+### Install terraform on ubuntu22
+[https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli](url)
+### $sudo apt-get update -y
+### $sudo apt-get upgrade -y
+### $sudo apt-get update && sudo apt-get install -y gnupg software-properties-common
+### $wget -O- https://apt.releases.hashicorp.com/gpg | \
+### gpg --dearmor | \
+### sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
+### $gpg --no-default-keyring \
+--keyring /usr/share/keyrings/hashicorp-archive-keyring.gpg \
+--fingerprint
+### $echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] \
+### https://apt.releases.hashicorp.com $(lsb_release -cs) main" | \
+### $ sudo tee /etc/apt/sources.list.d/hashicorp.list
+### $sudo apt update
+### $sudo apt-get install terraform
+### $terraform -help
+
+# Do
+Create input file – input.tf
+Create output file – output.tf
+
+# Don’t
+Hard code any value into main file - main.tf
+
+# Setup authentication for EC2 to run Terraform
++ Create IAM Role with Admin access.
++ Attach this IAM role to ubuntu EC2 instance.
+
+# To execute the terraform
++ First to clone the below url in ubuntu machine
+--> https://github.com/kohlidevops/terraform-project.git
+### $git clone https://github.com/kohlidevops/terraform-project.git
+### $cd /home/ubuntu/terraform-project/aws/local_state
+### $ls -l
+### File main.tf available.
++ $terraform init
++ $terraform plan
++ $terraform apply
++ $terraform destroy
+
+### What is tfstate file?
+   Terraform will use tfstate file to track everything that it created. For example, If Im going to change anything by tomorrow, then terraform will only understand using tfstate file that im updating the resource that I created yesterday.
+
+### Why should we maintain tfstate file in remotely?
+   Tfstate contains both sensitive and non-sensitive information. So we cant go with Git repositories.More people work with Terraform. So we can’t maintain with local system too.So we have a only option to store the tfstate file in remote backends. Everyone of your co-workers can access the file.Don’t manipulate or update the tfstate file by you own.
+
+
 
 
 
