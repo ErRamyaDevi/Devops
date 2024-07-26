@@ -85,6 +85,11 @@ Hard code any value into main file - main.tf
 + Create IAM Role with Admin access.
 + Attach this IAM role to ubuntu EC2 instance.
 
+# How a third party tool will connect with AWS services(or) How local instance can be communicate with AWS instance?
++ First, create a IAM user instead of IAM Role, and associate recommended policies to IAM User.
++ Generate Access Key and Secret Key for particular IAM user.
++ Install AWS CLI/ Configure AWS in your local system and use generated Access key and secret Key to connect this local EC2 Instance.
+  
 # To execute the terraform
 + First to clone the below url in ubuntu machine
 --> https://github.com/kohlidevops/terraform-project.git
