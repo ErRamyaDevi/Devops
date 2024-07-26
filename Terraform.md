@@ -54,13 +54,13 @@ Typically refers to the practice of defining and structuring your Terraform code
 
 # Install the HashiCorp GPG key.
 ### wget -O- https://apt.releases.hashicorp.com/gpg | \
-gpg --dearmor | \
-sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg > /dev/null
+### gpg --dearmor | \
+### sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg > /dev/null
 
 # Verify the key's fingerprint. The gpg command will report the key fingerprint:
 ### gpg --no-default-keyring \
---keyring /usr/share/keyrings/hashicorp-archive-keyring.gpg \
---fingerprint
+### --keyring /usr/share/keyrings/hashicorp-archive-keyring.gpg \
+### --fingerprint
 
 # Add the official HashiCorp repository to your system. The lsb_release -cs command finds the distribution release codename for your current system, such as buster, groovy, or sid.
 ### echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] \
