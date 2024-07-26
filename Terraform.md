@@ -80,6 +80,8 @@ Create output file – output.tf
 Hard code any value into main file - main.tf
 
 # Setup authentication for EC2 to run Terraform
+# why we are creating IAM ROle?
+### Though EC2 instance is a resource of AWS, it is a public instance which cannot be directly talk with any other AWS services. So we are creating IAM Role as below:
 + Create IAM Role with Admin access.
 + Attach this IAM role to ubuntu EC2 instance.
 
