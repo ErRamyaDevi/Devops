@@ -44,7 +44,7 @@ Typically refers to the practice of defining and structuring your Terraform code
 ![image](https://github.com/ErRamyaDevi/Devops/assets/159974512/a3fc33cb-db46-45eb-ae5e-b300d3056da3)
 
 
-## **Demo**
+## **Demo 1 in AWS linux**
 
 ### Install terraform on ubuntu22
 [https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli](url)
@@ -109,7 +109,25 @@ Hard code any value into main file - main.tf
    Tfstate contains both sensitive and non-sensitive information. So we cant go with Git repositories.More people work with Terraform. So we can’t maintain with local system too.So we have a only option to store the tfstate file in remote backends. Everyone of your co-workers can access the file.Don’t manipulate or update the tfstate file by you own.
 
 
+## **Demo 2 in linux locally**
 
+![image](https://github.com/user-attachments/assets/48995479-96c2-4921-9d97-527fa7b187b2)
+
+![image](https://github.com/user-attachments/assets/28a983a5-d1ba-482b-80ef-99d9b6ced3b0)
+
+### Install using Command Prompt
++ Step 1: Start CMD with administrative privileges.
++ Step 2:Execute "wsl --install" command.
+##### According to Microsoft the single command ''wsl --install" should automatically download and install Ubuntu.
+
+## Get the Missing GPG Key:
+### $ curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+## Add the hashicorp Repository:
+### $ sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+## Update the Repository:
+### sudo apt update
+### $sudo apt-get install terraform
+### terraform -v
 
 
 
