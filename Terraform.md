@@ -128,6 +128,7 @@ Hard code any value into main file - main.tf
 ### sudo apt update
 ### $sudo apt-get install terraform
 ### terraform -v
+### $sudo apt-get install terraform=<version No.> [for lower version]
 
 
 
