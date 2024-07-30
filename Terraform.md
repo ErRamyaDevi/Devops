@@ -130,5 +130,15 @@ Hard code any value into main file - main.tf
 ### terraform -v
 ### $sudo apt-get install terraform=<version No.> [for lower version]
 
+# Hashicorp Configuration Language(HCL)
+
+**resource "aws_ami_from_instance" "example" {
+  name               = "terraform-example"
+  source_instance_id = "i-xxxxxxxx"
+}**
+
+#### resource -->Block name
+#### aws --> Provider   (you can give any provider(GCP,Azure or local)
+#### ami_from_instance---> resource (you can use S3, VPC, RDS etc.,)
 
 
