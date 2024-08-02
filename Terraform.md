@@ -131,14 +131,36 @@ Hard code any value into main file - main.tf
 ### $sudo apt-get install terraform=<version No.> [for lower version]
 
 # Hashicorp Configuration Language(HCL)
-
+#### In Main.tf
 **resource "aws_ami_from_instance" "example" {
-  name               = "terraform-example"
+  name               = "terraform-example" (this is AMI Name not an instance Name)
   source_instance_id = "i-xxxxxxxx"
+
+(this is an Instance Name)
+tags = {
+    Name = "TerraformDEmo"
+        }
+  }**
+
+#### In provider.tf
+**provider "aws" {
+  region     = "us-west-2"
+  access_key = "IAM USERs my-access-key"
+  secret_key = "IAM Users my-secret-key"
 }**
 
 #### resource -->Block name
 #### aws --> Provider   (you can give any provider(GCP,Azure or local)
 #### ami_from_instance---> resource (you can use S3, VPC, RDS etc.,)
 
+$terraform init
+$terraform plan
+$terraform verify
+$terraform apply (or) $terraform apply --auto-approve
+$terraform show
+
+
+**Note: Never use hard code credentials directly into main.tf file**
+**Note: Never use provider name in two files**
+**Note: we can use two providers name at a time using alias argument for alternative configurations**
 
