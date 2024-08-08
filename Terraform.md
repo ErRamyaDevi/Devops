@@ -121,14 +121,21 @@ Hard code any value into main file - main.tf
 ##### According to Microsoft the single command ''wsl --install" should automatically download and install Ubuntu.
 
 ## Get the Missing GPG Key:
-### $ curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+```
+$ curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+```
 ## Add the hashicorp Repository:
-### $ sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+```
+$ sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+```
 ## Update the Repository:
-### sudo apt update
-### $sudo apt-get install terraform
-### terraform -v
-### $sudo apt-get install terraform=<version No.> [for lower version]
+```
+sudo apt update
+
+$sudo apt-get install terraform
+terraform -v
+$sudo apt-get install terraform=<version No.> [for lower version]
+```
 
 # Hashicorp Configuration Language(HCL)
 #### In Main.tf
