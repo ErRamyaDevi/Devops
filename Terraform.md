@@ -139,7 +139,8 @@ $sudo apt-get install terraform=<version No.> [for lower version]
 
 # Hashicorp Configuration Language(HCL)
 #### In Main.tf
-**resource "aws_ami_from_instance" "example" {
+```
+resource "aws_ami_from_instance" "example" {
   name               = "terraform-example" (this is AMI Name not an instance Name)
   source_instance_id = "i-xxxxxxxx"
 
@@ -147,14 +148,17 @@ $sudo apt-get install terraform=<version No.> [for lower version]
 tags = {
     Name = "TerraformDEmo"
         }
-  }**
+  }
+```
 
 #### In provider.tf
-**provider "aws" {
+```
+provider "aws" {
   region     = "us-west-2"
   access_key = "IAM USERs my-access-key"
   secret_key = "IAM Users my-secret-key"
-}**
+}
+```
 
 #### resource -->Block name
 #### aws --> Provider   (you can give any provider(GCP,Azure or local)
