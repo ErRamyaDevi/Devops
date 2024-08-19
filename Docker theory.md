@@ -21,7 +21,12 @@ A container is like a small, portable, and self-sufficient unit that contains ev
     Containers ensure that the application runs reliably by keeping the environment consistent across different deployment scenarios. They promote quick and seamless deployment, making it easier to move applications between development, testing, and production environments.
 
   # Docker file --(build)---> Docker Image ---(Run)---> Docker Container
+   Before creating container, we have to deploy our code locally / manually and then image and then container.
 
   ![217262726-7cabcb5b-074d-45cc-950e-84f7119e7162](https://github.com/user-attachments/assets/694bcc6a-f433-4aa0-891d-bd409e2c97f7)
 
 Why container?
++ In VM, one application cannot communicate with other as each VM are isolated and one application can be allowed to run in one VM.
++ In Container, Each VM contains multiple container on installation of Docker Engine (Docker Deamon) based on VM size. And, Each container runs an application. container A can communicate with Container B with help of Host operating system or Linux kernal or VM OS through physical resources.
+
+VM always depends on hypervisor, but docker container doesn't because it can run even in single hosted machine where Docker Deamon is successfully installed.
