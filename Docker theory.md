@@ -30,3 +30,8 @@ Why container?
 + In Container, Each VM contains multiple container on installation of Docker Engine (Docker Deamon) based on VM size. And, Each container runs an application. container A can communicate with Container B with help of Host operating system or Linux kernal or VM OS through physical resources.
 
 VM always depends on hypervisor, but docker container doesn't because it can run even in single hosted machine where Docker Deamon is successfully installed.
+
+
+
+# What is Docker?
+Docker is a containerization platform
