@@ -74,6 +74,13 @@ dockes ps
 
 ![360783951-77278eaf-24ab-4dd3-933a-4750b2f306ec](https://github.com/user-attachments/assets/182abc9e-3cde-47bc-a63c-8d04cc323369)
 ![image](https://github.com/user-attachments/assets/6c908ecd-d944-4872-8df1-846a7e5409bd)
+
+### TO check the listening port
+```
+sudo apt-get update -y
+sudo apt-get install net-tools -y
+netstat -tnpl
+```
 ### To stop the container
 ```
 docker-compose down
