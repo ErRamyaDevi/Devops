@@ -61,8 +61,10 @@ sudo nano docker-compose.yml
 (add the code in this file)
 ```
 **docker-compose up:** Runs containers in the foreground, with logs displayed in your terminal. The process is interactive, and stopping it will stop the containers.
+
 **docker-compose up -d:** Runs containers in the background (detached mode), freeing up your terminal. The containers continue to run independently of your terminal session.
 Both commands are used to start your Docker services, but the choice between them depends on whether you want to run them interactively (foreground) or in the background (detached).
+
 **Build & start the container**
 ```
 docker-compose build
@@ -81,6 +83,15 @@ sudo apt-get update -y
 sudo apt-get install net-tools -y
 netstat -tnpl
 ```
+> [!NOTE]
+> Port 80 and port 8080 are both used for web servers, but port 80 is the default port for HTTP, while port 8080 is an alternative port.
+
+> [!NOTE]
+> Exit Code 0: Purposely Stopped
+
+> [!NOTE]
+> Exit code 1 : application error or an invalid image reference.You need to examine the container and its applications to find the root cause.
+
 ### To stop the container
 ```
 docker-compose down
