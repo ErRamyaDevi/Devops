@@ -20,7 +20,7 @@ $df
 $df -h
 $df -l
 ```
-## To check any issues on docker host
+## To check any issues on docker host/docker daemon
 ```
 $sudo docker system events 
 ```
