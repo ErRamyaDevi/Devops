@@ -14,6 +14,12 @@ $sudo docker info
 ```
 $sudo docker system df 
 ```
+## To check the files used in filesystem
+```
+$df
+$df -h
+$df -l
+```
 ## To check any issues on docker host
 ```
 $sudo docker system events 
