@@ -24,7 +24,7 @@ $df -l
 ```
 $sudo docker system events 
 ```
-## To check real time usage of memory, cpu, and net io
+## To check the containers' real time usage of memory, cpu, and net io
 ```
 $sudo docker stats 
 ```
