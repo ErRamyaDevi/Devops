@@ -42,10 +42,7 @@ $sudo docker images
 $sudo docker pull <image-name> 
 $sudo docker pull httpd 
 ```
-## Disk usage of docker images, containers, local volumes and build cache
-```
-$sudo docker system df
-```
+
   
 ## Docker create vs Docker run
 + **docker create** command is used to create container. But not running state. 
