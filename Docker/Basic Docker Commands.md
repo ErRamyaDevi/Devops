@@ -215,4 +215,5 @@ $sudo docker start <container ID> or <container name>
 ## To remove all stopped containers, all networks not used by at least one container, all dangling images and all dangling build cache.
 ```
 $sudo docker system prune
+$sudo docker system prune -a --volumes
 ```
