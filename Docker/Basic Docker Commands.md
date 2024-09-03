@@ -76,6 +76,7 @@ $sudo docker ps -a
 ```
 $sudo docker exec -it <container-name> /bin/bash 
 $sudo docker exec -it web2 /bin/bash
+$sudo uname -a
 ```
   
 ## To exit from running container
@@ -181,7 +182,7 @@ $sudo docker ps -a
 
 ## To check status of specific docker container
 ```
-$sudo docker stats <contianer-name> 
+$sudo docker stats <container-name> 
 $sudo docker stats web2
 ```
   
@@ -190,7 +191,27 @@ $sudo docker stats web2
 $sudo docker top <container-name> 
 $sudo docker top web2
 ```
-  
+## To Remove all the exited container at once.
+```
+$sudo docker rm $(docker ps -a -q)
+$sudo docker rm -f $(sudo docker ps -a -q)
+```
+## To remove all containers with volumes associated:
+```
+docker rm -v -f $(docker ps -qa)
+```
+>[!NOTE]
+>To remove active container, you should stop the container first
+
+## TO stop the running container
+```
+$sudo docker stop <container ID> or <container name>
+```
+## TO start the running container
+```
+$sudo docker start <container ID> or <container name>
+```
+
 ## To remove all stopped containers, all networks not used by at least one container, all dangling images and all dangling build cache.
 ```
 $sudo docker system prune
