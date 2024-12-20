@@ -35,10 +35,10 @@ So, terraform will take care of talking to all of those cloud providers using th
 + Manage any infrastructure
 + Track your infrastructure – Current state of your infrastructure will be tracked in terraform.tfstate file in root directory.
 For better collaboration and scalability, Terraform provides various backend options where the state file can be stored remotely. such as Amazon S3 bucket, Terraform cloud, Azure Blob storage.
-+ Automate Changes and Collaboration
++ Automate Changes and Collaboration:-
 Terraform supports collaboration among team members by allowing configuration files to be shared and modified collaboratively.
 For example - If you want to upgrade the EC2 instance type, then update the terraform code and push this code to any VCS and raise the PR to validate the code with your teammate.
-+ Standard configuration
++ Standard configuration:-
 Typically refers to the practice of defining and structuring your Terraform code like easily readable format, module structure, **variable usage** -- re-usability of code, as individual folder from outside
 
 ![image](https://github.com/ErRamyaDevi/Devops/assets/159974512/a3fc33cb-db46-45eb-ae5e-b300d3056da3)
