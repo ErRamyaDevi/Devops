@@ -28,7 +28,7 @@ Example: Bash script, Jenkins pipeline.
 Application Programming interface (API).
 Every User request over a web is API call. When a particular code/script enable request (or) access over a web is called API as a code. 
 #### I.Q: How terraform works?
-Terraform converts your request to the API call of AWS or any Cloud and gets the request back and again Terraform will send you the request back to you.
+Terraform converts your request to  API call of AWS or any Cloud and gets the response back which Terraform will send you the response to you.
 As a user, you aren’t directly talking to the APIs of AWS or any cloud. But you are writing Terraform scripts and terraform is converting your request into API calls.
 So, terraform will take care of talking to all of those cloud providers using the concept of API as Code.
 #### I.Q: Why do we use Terraform?
