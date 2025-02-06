@@ -164,14 +164,20 @@ provider "aws" {
 #### aws --> Provider   (you can give any provider(GCP,Azure or local)
 #### ami_from_instance---> resource (you can use S3, VPC, RDS etc.,)
 
-$terraform init
-$terraform plan
-$terraform verify
-$terraform apply (or) $terraform apply --auto-approve
-$terraform show
+## $terraform init
+## $terraform plan
+## $terraform verify
+## $terraform apply (or) $terraform apply --auto-approve
+## $terraform show
+## $terraform destroy
 
 
-**Note: Never use hard code credentials directly into main.tf file**
-**Note: Never use provider name in two files**
-**Note: we can use two providers name at a time using alias argument for alternative configurations**
+>[!Note]
+> Never use hard code credentials directly into main.tf file
+
+>[!Note]
+> Never use provider name in two files
+
+>[!Note]
+> we can use two providers name at a time using alias argument for alternative configurations
 
