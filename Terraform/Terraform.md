@@ -165,9 +165,9 @@ provider "aws" {
 #### ami_from_instance---> resource (you can use S3, VPC, RDS etc.,)
 
 ## $terraform init
+## $terraform validate (syntax check)
 ## $terraform plan
-## $terraform verify
-## $terraform apply (or) $terraform apply --auto-approve
+## $terraform apply (or) $terraform apply --auto-approve (tfstate file gets created/updated here)
 ## $terraform show
 ## $terraform destroy
 
