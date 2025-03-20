@@ -1,0 +1,86 @@
+pipeline {
+    agent any
+     tools {
+        jdk 'jdk17'
+        maven 'maven3'
+    }
+    environment {
+        SCANNER_HOME=tool 'sonar-scanner'
+    }
+    stages {
+        stage('Checkout the Project from the GitHub to Jenkins Server') {
+            steps {
+                git branch: 'main', credentialsId: 'git-cred', url: 'https://github.com/ErRamyaDevi/Devopsproject1.git'
+            }
+        }
+        stage('Compile the Source Code') {
+            steps {
+                sh "mvn compile"
+            }
+        }
+        stage('Unit Test cases on Source Code') {
+            steps {
+                sh "mvn test"
+            }
+        }
+        stage('Vulnerability Scan using Trivy') {
+            steps {
+                sh "trivy fs --format table -o trivy-fs-report.html ."
+            }
+        }
+        stage('SonarQube Analysis') {
+            steps {
+                withSonarQubeEnv('sonar') {
+                sh '''$SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=CICD -Dsonar.projectKey=CICD \
+                -Dsonar.java.binaries=.'''
+                }
+            }
+        }
+        stage('Wait For Quality Gate Status') {
+            steps {
+                script {
+                    waitForQualityGate abortPipeline: false, credentialsId: 'sonar-token'
+                }
+            }
+        }
+         stage('Build the Package') {
+            steps {
+                sh "mvn package"
+            }
+        }
+        stage('Publish the Artifacts to the Nexus Repository') {
+            steps {
+                withMaven(globalMavenSettingsConfig: 'global-settings', jdk: 'jdk17', maven: 'maven3', mavenSettingsConfig: '', traceability: true) {
+                    sh "mvn deploy"
+                    }
+                }
+            }
+        stage('To Build and Tag the Docker Image') {
+            steps {
+                script {
+                    withDockerRegistry(credentialsId: 'dock-cred', toolName: 'docker') {
+                        sh "docker build -t rammyshak/demo:latest ."
+                        
+                    }
+                }
+            }
+        }
+        stage('Docker Image Scanning using Trivy') {
+            steps {
+                sh "trivy image --format table -o trivy-image-report.html rammyshak/demo"
+            }
+        }
+        
+         stage('To Push the Docker Image') {
+            steps {
+                script {
+                    withDockerRegistry(credentialsId: 'dock-cred', toolName: 'docker') {
+                        sh "docker push rammyshak/demo:latest"
+                        
+                    }
+                }
+            }
+        }
+         }
+   
+    }
