@@ -4,7 +4,7 @@ pipeline {
         jdk 'jdk17'
         maven 'maven3'
     }
-    environment {
+     environment {
         SCANNER_HOME=tool 'sonar-scanner'
     }
     stages {
@@ -23,12 +23,12 @@ pipeline {
                 sh "mvn test"
             }
         }
-        stage('Vulnerability Scan using Trivy') {
+         stage('Vulnerability Scan using Trivy') {
             steps {
                 sh "trivy fs --format table -o trivy-fs-report.html ."
             }
         }
-        stage('SonarQube Analysis') {
+         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('sonar') {
                 sh '''$SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=CICD -Dsonar.projectKey=CICD \
@@ -48,39 +48,53 @@ pipeline {
                 sh "mvn package"
             }
         }
-        stage('Publish the Artifacts to the Nexus Repository') {
+         stage('Publish the Artifacts to the Nexus Repository') {
             steps {
                 withMaven(globalMavenSettingsConfig: 'global-settings', jdk: 'jdk17', maven: 'maven3', mavenSettingsConfig: '', traceability: true) {
                     sh "mvn deploy"
                     }
                 }
             }
-        stage('To Build and Tag the Docker Image') {
+            stage('To Build and Tag the Docker Image') {
             steps {
                 script {
                     withDockerRegistry(credentialsId: 'dock-cred', toolName: 'docker') {
-                        sh "docker build -t rammyshak/demo:latest ."
+                        sh "docker build -t rammyshak/project1:latest ."
                         
                     }
                 }
             }
         }
-        stage('Docker Image Scanning using Trivy') {
+         stage('Docker Image Scanning using Trivy') {
             steps {
-                sh "trivy image --format table -o trivy-image-report.html rammyshak/demo"
+                sh "trivy image --format table -o trivy-image-report.html rammyshak/project1"
             }
         }
-        
-         stage('To Push the Docker Image') {
+        stage('To Push the Docker Image') {
             steps {
                 script {
                     withDockerRegistry(credentialsId: 'dock-cred', toolName: 'docker') {
-                        sh "docker push rammyshak/demo:latest"
+                        sh "docker push rammyshak/project1:latest"
                         
                     }
                 }
             }
         }
-         }
-   
+        stage('Deploy the Docker Image to the Kubernetes Cluster') {
+            steps {
+            withKubeConfig(caCertificate: '', clusterName: 'kubernetes', contextName: '', credentialsId: 'k8s-token', namespace: 'webapps', restrictKubeConfigAccess: false, serverUrl: 'https://10.0.14.138:6443') {
+                sh "kubectl apply -f deployment-service.yaml"
+                }
+            }
+        }
+        stage('To Verify the Deployment and Service') {
+            steps {
+            withKubeConfig(caCertificate: '', clusterName: 'kubernetes', contextName: '', credentialsId: 'k8s-token', namespace: 'webapps', restrictKubeConfigAccess: false, serverUrl: 'https://10.0.14.138:6443') {
+                sh "kubectl get pods -o wide -n webapps"
+                sh "kubectl get svc -n webapps"
+                }
+            }
+        }
     }
+     
+}
