@@ -1,0 +1,6 @@
+$touch Nexus-setup.sh
+$echo '<code>' > Nexus-setup.sh
+$chmod u+x Nexus-setup.sh
+[ec2-user@ip-10-0-6-60 ~]$ scp -i ~/.ssh/Devops.pem Nexus-setup.sh ec2-user@3.144.115.184<publicIP> [transfers code to centos EC2 machine]
+[ec2-user@ip-10-0-6-60 ~]$ chmod +x Nexus-setup.sh(executable permission)
+[ec2-user@ip-10-0-6-60 ~]$ sudo ./Nexus-setup.sh (execute)
