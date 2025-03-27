@@ -6,12 +6,12 @@ $chmod u+x Nexus-setup.sh
 [ec2-user@ip-10-0-6-60 ~]$ sudo ./Nexus-setup.sh (execute)
 
 ## **How to Use**
-#### 1. Upload the script to your EC2 instance or create it manually:
+### 1. Upload the script to your EC2 instance or create it manually:
 
 ```
 nano install_nexus.sh
 ```
-Paste the script inside, then save and exit (CTRL + X, then Y, then ENTER).
+## Paste the script inside, then save and exit (CTRL + X, then Y, then ENTER).
 
 #### 2.Make it executable:
 
@@ -29,6 +29,7 @@ sudo ./install_nexus.sh
 sudo systemctl status nexus
 ```
 ## **Access Nexus Repository**
+
 + URL: http://EC2-PUBLIC-IP:8081
 + Default credentials: Username:admin Password: Found in /opt/sonatype-work/nexus3/admin.password
   
